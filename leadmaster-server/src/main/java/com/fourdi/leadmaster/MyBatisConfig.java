@@ -13,6 +13,7 @@ import javax.sql.DataSource;
 
 @Configuration
 class MyBatisConfig {
+    @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
     private DataSource dataSource;
 
