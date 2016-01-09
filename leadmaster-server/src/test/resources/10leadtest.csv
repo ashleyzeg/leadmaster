@@ -1,0 +1,18 @@
+firstname,lastname,postalcode,city,state,country,email,companyname,phone1,phone2,phone3,leadref,title,companyref,activity,activity_date,activity_result
+Mike,Burroughs,46204,indianapolis,in,us,mike@burroughs.net,,317-430-4291
+Mice,Burroughs,46204,indianapolis,in,us,mike@burroughs.net,Burroughs Software Systems,,,,1,VP Engineering
+Michael,Burroughs,46204,indianapolis,in,us,mike@burroughs.net
+Steve,Jobs,,,,,steve@apple.com,Apple Computer
+Jony,Ive,,,,,jony@apple.com,Apple Computer
+Judy,Garland,,,,,sales@mgm.com
+Marilyn,Monroe,,,,,sales@mgm.com
+Greta,Garbo,,,,,sales@mgm.com
+Bozo,Clown,,,,,bozo@bigco.com,Big Company
+Cookie,Clown,,,,,cookie@bigco.com,Big Company
+Bozo,Clown,,,,,bozo@bigco.com,Little Division of Big Company
+Cookie,Clown,,,,,cookie@bigco.com,Little Division of Big Company
+Bad,Data
+Mike,Burroughs,46205,indianapolis,in,,mike@indyburroughs.net,Burroughs Family,317-430-4291
+Tammy,Burroughs,46230,fishers,in,,tammy@indyburroughs.net,Burroughs Family,317-696-8036
+Julia,Burroughs,31213,chicago,il,,julia@indyburroughs.net,Burroughs Family
+Collin,Burroughs,55555,new york NY,,,collin@indyburroughs.net,Burroughs Family
