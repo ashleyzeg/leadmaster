@@ -1,15 +1,16 @@
-package com.fourdi.leadmaster.models;
+package com.fourdi.leadmaster.models.services;
 
+import com.fourdi.leadmaster.models.domain.Rawlead;
+import com.fourdi.leadmaster.models.domain.ValidatedLead;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.Reader;
-import java.util.List;
 import java.util.stream.Stream;
 
 @Service
 public class PipelineService {
-    private final RawleadService    rawleadService;
+    private final RawleadService rawleadService;
     private final ValidationService validationService;
 
     @Autowired

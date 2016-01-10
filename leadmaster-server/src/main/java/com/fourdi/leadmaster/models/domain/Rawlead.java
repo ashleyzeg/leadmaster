@@ -1,4 +1,4 @@
-package com.fourdi.leadmaster.models;
+package com.fourdi.leadmaster.models.domain;
 
 public class Rawlead {
     private final String firstname;

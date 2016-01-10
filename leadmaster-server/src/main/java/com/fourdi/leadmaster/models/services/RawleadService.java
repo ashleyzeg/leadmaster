@@ -1,13 +1,12 @@
-package com.fourdi.leadmaster.models;
+package com.fourdi.leadmaster.models.services;
 
+import com.fourdi.leadmaster.models.domain.Rawlead;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Stream;
 
 @Service

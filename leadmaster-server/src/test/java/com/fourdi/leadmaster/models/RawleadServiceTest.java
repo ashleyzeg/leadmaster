@@ -1,6 +1,8 @@
 package com.fourdi.leadmaster.models;
 
 import com.fourdi.leadmaster.LeadmasterServer;
+import com.fourdi.leadmaster.models.domain.Rawlead;
+import com.fourdi.leadmaster.models.services.RawleadService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,14 +14,15 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.Reader;
-import java.util.List;
 import java.util.stream.Stream;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(LeadmasterServer.class)
 public class RawleadServiceTest {
 
-    @Autowired RawleadService rawleadService;
+    @SuppressWarnings("SpringJavaAutowiringInspection")
+    @Autowired
+    RawleadService rawleadService;
 
     @Test
     public void mapAndXformTest() throws FileNotFoundException{

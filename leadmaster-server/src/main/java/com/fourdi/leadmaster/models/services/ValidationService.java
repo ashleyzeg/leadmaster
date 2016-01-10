@@ -1,5 +1,8 @@
-package com.fourdi.leadmaster.models;
+package com.fourdi.leadmaster.models.services;
 
+import com.fourdi.leadmaster.models.domain.Rawlead;
+import com.fourdi.leadmaster.models.domain.ValidatedLead;
+import com.fourdi.leadmaster.models.domain.ValidationError;
 import org.springframework.stereotype.Service;
 
 import java.util.stream.Stream;

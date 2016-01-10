@@ -1,4 +1,4 @@
-package com.fourdi.leadmaster.models;
+package com.fourdi.leadmaster.models.domain;
 
 public class ValidationError {
     public enum Level {hard, soft};
