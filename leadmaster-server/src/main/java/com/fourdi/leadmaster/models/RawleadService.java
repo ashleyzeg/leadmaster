@@ -8,12 +8,13 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 @Service
 public class RawleadService {
 
-    public List<Rawlead> mapAndXform(final Reader reader) {
-        List<Rawlead> leadlist = new ArrayList<>();
+    public Stream<Rawlead> mapAndXform(final Reader reader) {
+        Stream.Builder<Rawlead> stream = Stream.builder();
 
         try
         {
@@ -38,15 +39,15 @@ public class RawleadService {
                     final String activity = (record.size() >= 15) ? record.get(14) : null;
                     final String activity_date = (record.size() >= 16) ? record.get(15) : null;
                     final String activity_result = (record.size() >= 17) ? record.get(16) : null;
-                    leadlist.add(new Rawlead(firstname, lastname, postalcode, city, state, country,
-                            email, companyname, phone1, phone2, phone3, leadref, title, companyref,
-                            activity, activity_date, activity_result));
+                    stream.add(new Rawlead(firstname, lastname, postalcode, city, state, country,
+                                           email, companyname, phone1, phone2, phone3, leadref, title, companyref,
+                                           activity, activity_date, activity_result));
                 }
             });
         } catch (IOException e)
         {
 
         }
-        return leadlist;
+        return stream.build();
     }
 }

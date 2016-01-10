@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.Reader;
 import java.util.List;
+import java.util.stream.Stream;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(LeadmasterServer.class)
@@ -23,8 +24,8 @@ public class RawleadServiceTest {
     @Test
     public void mapAndXformTest() throws FileNotFoundException{
         Reader r = new FileReader(new File("src/test/10leadtest.csv"));
-        List<Rawlead> results = rawleadService.mapAndXform(r);
+        Stream<Rawlead> results = rawleadService.mapAndXform(r);
         Assert.assertNotNull(results);
-        Assert.assertEquals(17, results.size());
+        Assert.assertEquals(17, results.count());
     }
 }

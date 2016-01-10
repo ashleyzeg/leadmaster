@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.Reader;
 import java.util.List;
+import java.util.stream.Stream;
 
 @Service
 public class PipelineService {
@@ -19,7 +20,7 @@ public class PipelineService {
     }
 
     public void processLeadFile(Reader reader) {
-        List<Rawlead> xformedLeads   = rawleadService.mapAndXform(reader);
-        List<Rawlead> validatedLeads = validationService.validateLeads(xformedLeads);
+        Stream<Rawlead>       xformedLeads   = rawleadService.mapAndXform(reader);
+        Stream<ValidatedLead> validatedLeads = validationService.validateLeads(xformedLeads);
     }
 }
