@@ -1,8 +1,8 @@
-package com.fourdi.leadmaster.models;
+package com.fourdi.leadmaster.model;
 
 import com.fourdi.leadmaster.LeadmasterServer;
-import com.fourdi.leadmaster.models.domain.Rawlead;
-import com.fourdi.leadmaster.models.services.RawleadService;
+import com.fourdi.leadmaster.model.domain.Rawlead;
+import com.fourdi.leadmaster.model.service.RawleadService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

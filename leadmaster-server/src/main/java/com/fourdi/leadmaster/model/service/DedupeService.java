@@ -1,9 +1,9 @@
-package com.fourdi.leadmaster.models.services;
+package com.fourdi.leadmaster.model.service;
 
-import com.fourdi.leadmaster.models.domain.DedupeResolution;
-import com.fourdi.leadmaster.models.domain.DedupeResult;
-import com.fourdi.leadmaster.models.domain.LeadIndex;
-import com.fourdi.leadmaster.models.domain.ValidatedLead;
+import com.fourdi.leadmaster.model.domain.DedupeResolution;
+import com.fourdi.leadmaster.model.domain.DedupeResult;
+import com.fourdi.leadmaster.model.domain.LeadIndex;
+import com.fourdi.leadmaster.model.domain.ValidatedLead;
 import org.springframework.stereotype.Service;
 
 import java.util.stream.Stream;

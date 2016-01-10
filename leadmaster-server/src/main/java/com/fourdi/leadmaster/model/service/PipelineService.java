@@ -1,6 +1,6 @@
-package com.fourdi.leadmaster.models.services;
+package com.fourdi.leadmaster.model.service;
 
-import com.fourdi.leadmaster.models.domain.*;
+import com.fourdi.leadmaster.model.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

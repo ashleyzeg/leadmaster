@@ -1,6 +1,6 @@
-package com.fourdi.leadmaster.models.services;
+package com.fourdi.leadmaster.model.service;
 
-import com.fourdi.leadmaster.models.domain.Rawlead;
+import com.fourdi.leadmaster.model.domain.Rawlead;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.springframework.stereotype.Service;
