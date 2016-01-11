@@ -12,17 +12,15 @@ public class PersistenceService {
     Logger logger = org.slf4j.LoggerFactory.getLogger(PersistenceService.class);
 
     private final LeadMapper leadMapper;
-    private final CompanyMapper companyMapper;
 
     @Autowired
-    public PersistenceService(LeadMapper leadMapper, CompanyMapper companyMapper) {
+    public PersistenceService(LeadMapper leadMapper) {
         this.leadMapper = leadMapper;
-        this.companyMapper = companyMapper;
     }
 
     private Company addCompany(ValidatedData validatedData) {
         Company company = new Company(validatedData);
-        companyMapper.insertCompany(company);
+        leadMapper.insertCompany(company);
         return company;
     }
 
@@ -32,20 +30,31 @@ public class PersistenceService {
         return lead;
     }
 
+    private Employment addEmployment(Lead lead, Company company, String title) {
+        Employment emp = new Employment(lead.getId(), company.getId(), null, title);
+        leadMapper.insertEmployment(emp);
+        return emp;
+    }
+
     public UnprocessedData writeData(ValidatedData validatedData) {
         logger.debug("Writing lead {} {}", validatedData.getFirstname(), validatedData.getLastname());
         if(validatedData.hasHardErrors()) {
             return new UnprocessedData(validatedData);
         }
         else {
-            Lead lead = addLead(validatedData);
-            Company company = (validatedData.getCompanyname() != null) ? addCompany(validatedData) : null;
+            Lead    lead    = addLead(validatedData);
+            Company company = null;
+
+            if (validatedData.getCompanyname() != null) {
+                company = addCompany(validatedData);
+                addEmployment(lead, company, validatedData.getTitle());
+            }
             return new UnprocessedData(validatedData, lead, company);
         }
     }
 
     public Stream<UnprocessedData> writeNewLeads(Stream<ValidatedData> leads) {
-        return leads.parallel().map(lead -> writeData(lead));
+        return leads.parallel().map(this::writeData);
     }
 
     public Stream<DedupeResolution> updatedMergedLeads(Stream<DedupeResolution> resolutions) {

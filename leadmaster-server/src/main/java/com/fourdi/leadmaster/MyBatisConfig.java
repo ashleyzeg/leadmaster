@@ -1,6 +1,5 @@
 package com.fourdi.leadmaster;
 
-import com.fourdi.leadmaster.model.domain.CompanyMapper;
 import com.fourdi.leadmaster.model.domain.LeadMapper;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -23,8 +22,7 @@ class MyBatisConfig {
     SqlSessionFactory sqlSessionFactory() throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-        bean.setMapperLocations(new Resource[]{new ClassPathResource("/mybatis/lead.xml"),
-                                               new ClassPathResource("/mybatis/company.xml")});
+        bean.setMapperLocations(new Resource[]{new ClassPathResource("/mybatis/lead.xml")});
         return bean.getObject();
     }
 
@@ -37,12 +35,6 @@ class MyBatisConfig {
     public LeadMapper leadMapper() throws Exception {
         SqlSessionTemplate sessionTemplate = sqlSessionTemplate();
         return sessionTemplate.getMapper(LeadMapper.class);
-    }
-
-    @Bean
-    public CompanyMapper companyMapper() throws Exception {
-        SqlSessionTemplate sessionTemplate = sqlSessionTemplate();
-        return sessionTemplate.getMapper(CompanyMapper.class);
     }
 }
 

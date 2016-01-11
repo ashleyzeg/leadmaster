@@ -24,6 +24,15 @@
              #{country},
              #{status},
              #{validation_errors});
+    </insert>
 
+    <insert id="insertCompany" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        INSERT INTO dim_company (companyname, companyref, status, validation_errors)
+        VALUES (#{companyname}, #{companyref}, #{status}, #{validation_errors});
+    </insert>
+
+    <insert id="insertEmployment">
+        INSERT INTO fact_employment (lead_id, company_id, title_classification_id, title)
+        VALUES (#{lead_id}, #{company_id}, #{title_classification_id}, #{title});
     </insert>
 </mapper>
