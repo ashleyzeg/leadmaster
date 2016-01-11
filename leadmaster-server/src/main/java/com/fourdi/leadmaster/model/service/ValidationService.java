@@ -2,7 +2,7 @@ package com.fourdi.leadmaster.model.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fourdi.leadmaster.model.domain.RawDatas;
+import com.fourdi.leadmaster.model.domain.RawData;
 import com.fourdi.leadmaster.model.domain.ValidatedData;
 import com.fourdi.leadmaster.model.domain.ValidationError;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 public class ValidationService {
     @Autowired private ObjectMapper jacksonObjectMapper;
 
-    private ValidationError checkHasEmailOrPhone(final RawDatas rawData) {
+    private ValidationError checkHasEmailOrPhone(final RawData rawData) {
         if (rawData.getPhone1() == null &&
                 rawData.getPhone2() == null &&
                 rawData.getPhone3() == null &&
@@ -27,15 +27,15 @@ public class ValidationService {
         }
     }
 
-    private ValidationError checkValidFirstName(final RawDatas rawData) {
+    private ValidationError checkValidFirstName(final RawData rawData) {
         return null;
     }
 
-    private ValidationError checkValidLastName(final RawDatas rawData) {
+    private ValidationError checkValidLastName(final RawData rawData) {
         return null;
     }
 
-    public ValidatedData validateLead(final RawDatas rawData) {
+    public ValidatedData validateLead(final RawData rawData) {
         ValidationError error;
         Stream.Builder<ValidationError> builder = Stream.builder();
         if((error = checkHasEmailOrPhone(rawData)) != null) { builder.add(error); }
@@ -54,7 +54,7 @@ public class ValidationService {
         return new ValidatedData(rawData, errors, errorString);
     }
 
-    public Stream<ValidatedData> validateLeads(final Stream<RawDatas> leads) {
+    public Stream<ValidatedData> validateLeads(final Stream<RawData> leads) {
         return leads.parallel().map(rawlead -> validateLead(rawlead));
     }
 }

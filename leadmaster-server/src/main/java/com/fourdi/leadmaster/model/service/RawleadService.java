@@ -1,6 +1,6 @@
 package com.fourdi.leadmaster.model.service;
 
-import com.fourdi.leadmaster.model.domain.RawDatas;
+import com.fourdi.leadmaster.model.domain.RawData;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.springframework.stereotype.Service;
@@ -12,8 +12,8 @@ import java.util.stream.Stream;
 @Service
 public class RawleadService {
 
-    public Stream<RawDatas> mapAndXform(final Reader reader) {
-        Stream.Builder<RawDatas> stream = Stream.builder();
+    public Stream<RawData> mapAndXform(final Reader reader) {
+        Stream.Builder<RawData> stream = Stream.builder();
 
         try
         {
@@ -38,7 +38,7 @@ public class RawleadService {
                     final String activity = (record.size() >= 15) ? record.get(14) : null;
                     final String activity_date = (record.size() >= 16) ? record.get(15) : null;
                     final String activity_result = (record.size() >= 17) ? record.get(16) : null;
-                    stream.add(new RawDatas(firstname, lastname, postalcode, city, state, country,
+                    stream.add(new RawData(firstname, lastname, postalcode, city, state, country,
                                            email, companyname, phone1, phone2, phone3, leadref, title, companyref,
                                            activity, activity_date, activity_result));
                 }

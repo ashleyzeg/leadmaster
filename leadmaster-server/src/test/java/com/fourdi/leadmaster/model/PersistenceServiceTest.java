@@ -1,7 +1,7 @@
 package com.fourdi.leadmaster.model;
 
 import com.fourdi.leadmaster.LeadmasterServer;
-import com.fourdi.leadmaster.model.domain.RawDatas;
+import com.fourdi.leadmaster.model.domain.RawData;
 import com.fourdi.leadmaster.model.domain.ValidatedData;
 import com.fourdi.leadmaster.model.service.PersistenceService;
 import org.junit.Test;
@@ -23,7 +23,7 @@ public class PersistenceServiceTest {
 
     @Test
     public void writeValidatedLeadTest() {
-        RawDatas rl = new RawDatas("Mike", "Burroughs", null, null, null, null, null, "Some Company", null, null, null, null, null, null, null, null, null);
+        RawData rl = new RawData("Mike", "Burroughs", null, null, null, null, null, "Some Company", null, null, null, null, null, null, null, null, null);
         ValidatedData vl = new ValidatedData(rl, Stream.empty(), "");
         persistenceService.writeData(vl);
     }

@@ -42,7 +42,7 @@ public class PipelineService {
 
         LeadIndex leadIndex = indexService.newIndex();
 
-        Stream<RawDatas>          xformedLeads   = rawleadService.mapAndXform(reader);
+        Stream<RawData>          xformedLeads   = rawleadService.mapAndXform(reader);
         Stream<ValidatedData>    validatedLeads = validationService.validateLeads(xformedLeads);
         Stream<UnprocessedData>  persistedLeads = persistenceService.writeNewLeads(validatedLeads);
                                  leadIndex      = indexService.updateIndex(leadIndex, persistedLeads);
