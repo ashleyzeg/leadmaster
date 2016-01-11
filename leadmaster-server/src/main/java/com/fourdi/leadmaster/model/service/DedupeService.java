@@ -3,14 +3,14 @@ package com.fourdi.leadmaster.model.service;
 import com.fourdi.leadmaster.model.domain.DedupeResolution;
 import com.fourdi.leadmaster.model.domain.DedupeResult;
 import com.fourdi.leadmaster.model.domain.LeadIndex;
-import com.fourdi.leadmaster.model.domain.ValidatedLead;
+import com.fourdi.leadmaster.model.domain.UnprocessedData;
 import org.springframework.stereotype.Service;
 
 import java.util.stream.Stream;
 
 @Service
 public class DedupeService {
-    public Stream<DedupeResult> dedupe(final LeadIndex leadIndex, Stream<ValidatedLead> leads) {
+    public Stream<DedupeResult> dedupe(final LeadIndex leadIndex, Stream<UnprocessedData> leads) {
         Stream.Builder<DedupeResult> results = Stream.builder();
 
         return results.build();

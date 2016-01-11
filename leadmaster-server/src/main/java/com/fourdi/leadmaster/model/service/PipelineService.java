@@ -28,12 +28,23 @@ public class PipelineService {
         this.dedupeService      = dedupeService;
     }
 
-    public void processLeadFile(Reader reader) {
+    /**
+     * Process a file of leads.  The upload descriptor should have already been written to the
+     * database prior to being passed to processLeadFile.
+     *
+     * @param reader            A reader initialized to point to the data to be uploaded.
+     * @param uploadDescriptor  The descriptor for the upload.
+     */
+    public void processLeadFile(Reader reader, Upload uploadDescriptor) {
+        if (uploadDescriptor.getId() == null) {
+            return;
+        }
+
         LeadIndex leadIndex = indexService.newIndex();
 
-        Stream<Rawlead>          xformedLeads   = rawleadService.mapAndXform(reader);
-        Stream<ValidatedLead>    validatedLeads = validationService.validateLeads(xformedLeads);
-        Stream<ValidatedLead>    persistedLeads = persistenceService.writeNewLeads(validatedLeads);
+        Stream<RawData>          xformedLeads   = rawleadService.mapAndXform(reader);
+        Stream<ValidatedData>    validatedLeads = validationService.validateLeads(xformedLeads);
+        Stream<UnprocessedData>  persistedLeads = persistenceService.writeNewLeads(validatedLeads);
                                  leadIndex      = indexService.updateIndex(leadIndex, persistedLeads);
         Stream<DedupeResult>     dedupeResults  = dedupeService.dedupe(leadIndex, persistedLeads);
         Stream<DedupeResolution> resolutions    = dedupeService.autoresolve(leadIndex, dedupeResults);

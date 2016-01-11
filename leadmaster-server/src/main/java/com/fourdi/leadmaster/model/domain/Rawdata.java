@@ -1,6 +1,6 @@
 package com.fourdi.leadmaster.model.domain;
 
-public class Rawlead {
+public class RawData {
     private final String firstname;
     private final String lastname;
     private final String postalcode;
@@ -19,7 +19,7 @@ public class Rawlead {
     private final String activity_date;
     private final String activity_result;
 
-    public Rawlead(String firstname, String lastname, String postalcode, String city, String state,
+    public RawData(String firstname, String lastname, String postalcode, String city, String state,
                    String country, String email, String companyname, String phone1, String phone2,
                    String phone3, String leadref, String title, String companyref, String activity,
                    String activity_date, String activity_result) {

@@ -1,5 +1,7 @@
 package com.fourdi.leadmaster;
 
+import com.fourdi.leadmaster.model.domain.CompanyMapper;
+import com.fourdi.leadmaster.model.domain.LeadMapper;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -21,8 +23,8 @@ class MyBatisConfig {
     SqlSessionFactory sqlSessionFactory() throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-//        bean.setMapperLocations(new Resource[] {new ClassPathResource("/mybatis/merchant.xml"),
-//                                                new ClassPathResource("/mybatis/geo.xml")});
+        bean.setMapperLocations(new Resource[]{new ClassPathResource("/mybatis/lead.xml"),
+                                               new ClassPathResource("/mybatis/company.xml")});
         return bean.getObject();
     }
 
@@ -31,15 +33,16 @@ class MyBatisConfig {
         return new SqlSessionTemplate(sqlSessionFactory());
     }
 
-//    @Bean
-//    public GeoMapper geoMapper() throws Exception {
-//        SqlSessionTemplate sessionTemplate = sqlSessionTemplate();
-//        return sessionTemplate.getMapper(GeoMapper.class);
-//    }
-//
-//    @Bean
-//    public MerchantMapper merchantMapper() throws Exception {
-//        SqlSessionTemplate sessionTemplate = sqlSessionTemplate();
-//        return sessionTemplate.getMapper(MerchantMapper.class);
-//    }
+    @Bean
+    public LeadMapper leadMapper() throws Exception {
+        SqlSessionTemplate sessionTemplate = sqlSessionTemplate();
+        return sessionTemplate.getMapper(LeadMapper.class);
+    }
+
+    @Bean
+    public CompanyMapper companyMapper() throws Exception {
+        SqlSessionTemplate sessionTemplate = sqlSessionTemplate();
+        return sessionTemplate.getMapper(CompanyMapper.class);
+    }
 }
+

@@ -24,4 +24,5 @@ public class ValidationError {
     public String getDescription() {
         return description;
     }
+
 }

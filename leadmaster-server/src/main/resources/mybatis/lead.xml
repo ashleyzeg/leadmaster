@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fourdi.leadmaster.model.domain.LeadMapper">
+    <insert id="insertLead" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        INSERT INTO dim_lead (leadref,
+                              firstname,
+                              lastname,
+                              postalcode,
+                              city,
+                              state,
+                              country,
+                              status,
+                              validation_errors)
+        VALUES
+            (#{leadref},
+             #{firstname},
+             #{lastname},
+             #{postalcode},
+             #{city},
+             #{state},
+             #{country},
+             #{status},
+             #{validation_errors});
+
+    </insert>
+</mapper>

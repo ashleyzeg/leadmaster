@@ -1,7 +1,7 @@
 package com.fourdi.leadmaster.model;
 
 import com.fourdi.leadmaster.LeadmasterServer;
-import com.fourdi.leadmaster.model.domain.Rawlead;
+import com.fourdi.leadmaster.model.domain.RawData;
 import com.fourdi.leadmaster.model.service.RawleadService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -18,7 +18,7 @@ import java.util.stream.Stream;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(LeadmasterServer.class)
-public class RawleadServiceTest {
+public class RawDataServiceTest {
 
     @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
@@ -27,7 +27,7 @@ public class RawleadServiceTest {
     @Test
     public void mapAndXformTest() throws FileNotFoundException{
         Reader r = new FileReader(new File("src/test/10leadtest.csv"));
-        Stream<Rawlead> results = rawleadService.mapAndXform(r);
+        Stream<RawData> results = rawleadService.mapAndXform(r);
         Assert.assertNotNull(results);
         Assert.assertEquals(17, results.count());
     }
