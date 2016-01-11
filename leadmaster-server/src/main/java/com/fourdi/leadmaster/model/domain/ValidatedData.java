@@ -3,17 +3,17 @@ package com.fourdi.leadmaster.model.domain;
 import java.util.stream.Stream;
 
 public class ValidatedData {
-    private final RawData rawData;
+    private final RawDatas rawData;
     private final Stream<ValidationError> errors;
     private final String errorString;
 
-    public ValidatedData(RawData rawData, Stream<ValidationError> errors, String errorString) {
+    public ValidatedData(RawDatas rawData, Stream<ValidationError> errors, String errorString) {
         this.rawData = rawData;
         this.errors = errors;
         this.errorString = errorString;
     }
 
-    public RawData getRawData() {
+    public RawDatas getRawData() {
         return rawData;
     }
 

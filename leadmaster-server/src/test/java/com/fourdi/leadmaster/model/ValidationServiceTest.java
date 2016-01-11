@@ -1,7 +1,7 @@
 package com.fourdi.leadmaster.model;
 
 import com.fourdi.leadmaster.LeadmasterServer;
-import com.fourdi.leadmaster.model.domain.RawData;
+import com.fourdi.leadmaster.model.domain.RawDatas;
 import com.fourdi.leadmaster.model.domain.ValidatedData;
 import com.fourdi.leadmaster.model.service.ValidationService;
 import org.junit.Test;
@@ -24,7 +24,7 @@ public class ValidationServiceTest {
 
     @Test
     public void checkHasEmailOrPhoneTest() {
-        RawData rl = new RawData(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+        RawDatas rl = new RawDatas(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
         ValidatedData vl = validationService.validateLead(rl);
         Assert.notNull(vl);
     }
