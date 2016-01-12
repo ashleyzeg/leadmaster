@@ -5,6 +5,3 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/leadmaster
     username: mike
-
-logger:
-  level.com.shopyourspot: TRACE
